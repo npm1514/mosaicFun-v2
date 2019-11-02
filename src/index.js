@@ -74,6 +74,10 @@ app.get('/home', (req, res) => {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.send(returnHTML(data, homeBundle, HomeRoot, "home"));
 });
+app.get('/images/:id', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=31557600');
+  res.sendFile('./images/' + req.params.id);
+});
 app.get('/login', (req, res) => {
   let data = "";
   res.set('Cache-Control', 'public, max-age=31557600');
