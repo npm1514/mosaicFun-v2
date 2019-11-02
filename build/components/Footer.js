@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _footer = require("../styled-components/footer");
+var _footer = require("../styled-components/components/footer");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -45,7 +45,7 @@ function (_Component) {
   _createClass(FooterComponent, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_footer.Footer, null, "footer");
+      return _react["default"].createElement(_footer.Footer, null, _react["default"].createElement("h3", null, "Mosaic Fun Tool"), _react["default"].createElement("h4", null, "Copyright ", new Date().getFullYear()), _react["default"].createElement("h4", null, "Contact - (716)450-2362"), _react["default"].createElement("h4", null, "Salt Lake City, UT"));
     }
   }]);
 

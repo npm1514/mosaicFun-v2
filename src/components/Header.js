@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Header, LogoImg } from '../styled-components/header';
+import React, { Component } from 'react';
+import { Header, LogoImg, NavLink, HeaderOrg } from '../styled-components/components/header';
 import { MainButton, MainInput } from '../styled-components/global';
 
 class HeaderComponent extends Component {
@@ -7,12 +7,26 @@ class HeaderComponent extends Component {
     const {gridLines, stateChange, colorText, mainTool } = this.props;
     return (
       <Header>
-        <LogoImg
+        <NavLink href="/"><LogoImg
           src='/images/logoNoSlogan.png'
-        />
+        /></NavLink>
+        {
+          !mainTool && (
+            <HeaderOrg>
+              <span>
+                <NavLink href="/newaccount">Features</NavLink>
+                <NavLink href="/newaccount">Upgrade</NavLink>
+              </span>
+              <span>
+                <NavLink href="/main">Try It Out</NavLink>
+                <NavLink href="/login">Log In</NavLink>
+              </span>
+            </HeaderOrg>
+          )
+        }
         {
           mainTool && (
-            <Fragment>
+            <HeaderOrg>
               <MainButton
                 id="restartBtn"
                 type="button"
@@ -37,7 +51,7 @@ class HeaderComponent extends Component {
                 type="button"
                 onClick={this.props.printImage}
               >Print</MainButton>
-            </Fragment>
+            </HeaderOrg>
           )
         }
       </Header>

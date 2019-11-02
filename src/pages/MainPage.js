@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import {
-  MainWrapper,
-  MainContent,
-  MainImage,
-  MosaicOverlay,
-  PrintCanvas
-} from '../styled-components/main';
+import { Header, Footer } from '../components';
+import { MainWrapper, MainContent, MainImage, MosaicOverlay, PrintCanvas } from '../styled-components/pages/main';
 import { MainForm, MainInput } from '../styled-components/global';
 
 class Main extends Component {

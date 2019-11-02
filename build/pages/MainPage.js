@@ -7,15 +7,11 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Header = _interopRequireDefault(require("../components/Header"));
+var _components = require("../components");
 
-var _Footer = _interopRequireDefault(require("../components/Footer"));
-
-var _main = require("../styled-components/main");
+var _main = require("../styled-components/pages/main");
 
 var _global = require("../styled-components/global");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -258,7 +254,7 @@ function (_Component) {
           premium = _this$state4.premium,
           colorText = _this$state4.colorText,
           gridLines = _this$state4.gridLines;
-      return _react["default"].createElement(_main.MainWrapper, null, _react["default"].createElement(_Header["default"], {
+      return _react["default"].createElement(_main.MainWrapper, null, _react["default"].createElement(_components.Header, {
         printImage: this.printImage,
         gridLines: gridLines,
         colorText: colorText,
@@ -287,7 +283,7 @@ function (_Component) {
         src: "https://html2canvas.hertzen.com/dist/html2canvas.min.js"
       }), _react["default"].createElement("script", {
         src: "https://unpkg.com/jspdf@latest/dist/jspdf.min.js"
-      })), _react["default"].createElement(_Footer["default"], null));
+      })), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

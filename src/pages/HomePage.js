@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { HomeWrapper, HomeContent } from '../styled-components/home';
+import { Header, Footer, Carousel } from '../components';
+import { HomeWrapper, HomeContent } from '../styled-components/pages/home';
 
 class Home extends Component {
     render(){
@@ -9,7 +8,7 @@ class Home extends Component {
           <HomeWrapper>
               <Header/>
               <HomeContent>
-                home page
+                <Carousel/>
               </HomeContent>
               <Footer/>
           </HomeWrapper>

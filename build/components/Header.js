@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _header = require("../styled-components/header");
+var _header = require("../styled-components/components/header");
 
 var _global = require("../styled-components/global");
 
@@ -52,9 +52,19 @@ function (_Component) {
           stateChange = _this$props.stateChange,
           colorText = _this$props.colorText,
           mainTool = _this$props.mainTool;
-      return _react["default"].createElement(_header.Header, null, _react["default"].createElement(_header.LogoImg, {
+      return _react["default"].createElement(_header.Header, null, _react["default"].createElement(_header.NavLink, {
+        href: "/"
+      }, _react["default"].createElement(_header.LogoImg, {
         src: "/images/logoNoSlogan.png"
-      }), mainTool && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_global.MainButton, {
+      })), !mainTool && _react["default"].createElement(_header.HeaderOrg, null, _react["default"].createElement("span", null, _react["default"].createElement(_header.NavLink, {
+        href: "/newaccount"
+      }, "Features"), _react["default"].createElement(_header.NavLink, {
+        href: "/newaccount"
+      }, "Upgrade")), _react["default"].createElement("span", null, _react["default"].createElement(_header.NavLink, {
+        href: "/main"
+      }, "Try It Out"), _react["default"].createElement(_header.NavLink, {
+        href: "/login"
+      }, "Log In"))), mainTool && _react["default"].createElement(_header.HeaderOrg, null, _react["default"].createElement(_global.MainButton, {
         id: "restartBtn",
         type: "button",
         onClick: function onClick() {

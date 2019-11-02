@@ -6,8 +6,8 @@ import styled from 'styled-components';
   `;
 
   export const MainContent = styled.div`
-    width: calc(100% - 32px);
-    padding: 16px;
+    width: 100%;
+    padding: 16px 0;
     min-height: 300px;
     text-align: center;
   `;
