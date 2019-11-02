@@ -5,10 +5,12 @@ import styled from 'styled-components';
     min-height: 100vh;
   `;
 
-  export const LoginContent = styled.div`
+  export const LoginBlock = styled.div`
     width: calc(100% - 32px);
     padding: 16px;
-    min-height: 300px;
+    height: max-content;
     text-align: center;
+    @media (min-width: 432px){
+      width: 400px;
+    }
   `;
-  
