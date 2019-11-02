@@ -84,6 +84,11 @@ _fs["default"].readFile('./dist/js/myaccount.bundle.min.js', "utf8", function (e
   myaccountBundle = data || "";
 });
 
+app.get('/', function (req, res) {
+  var data = "";
+  res.set('Cache-Control', 'public, max-age=31557600');
+  res.send(returnHTML(data, homeBundle, _HomeRoot["default"], "home"));
+});
 app.get('/home', function (req, res) {
   var data = "";
   res.set('Cache-Control', 'public, max-age=31557600');

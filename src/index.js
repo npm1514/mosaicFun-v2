@@ -64,6 +64,11 @@ fs.readFile('./dist/js/myaccount.bundle.min.js', "utf8", (err, data) => {
   myaccountBundle = data || "";
 })
 
+app.get('/', (req, res) => {
+  let data = "";
+  res.set('Cache-Control', 'public, max-age=31557600');
+  res.send(returnHTML(data, homeBundle, HomeRoot, "home"));
+});
 app.get('/home', (req, res) => {
   let data = "";
   res.set('Cache-Control', 'public, max-age=31557600');
