@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { CheckoutWrapper, CheckoutContent } from '../styled-components/pages/checkout';
+import { Header, Footer } from '../components';
+import { CheckoutWrapper } from '../styled-components/pages/checkout';
+import { MainContent } from '../styled-components/global';
 
 class Checkout extends Component {
     render(){
       return (
           <CheckoutWrapper>
               <Header/>
-              <CheckoutContent>
+              <MainContent>
                 checkout page
-              </CheckoutContent>
+              </MainContent>
               <Footer/>
           </CheckoutWrapper>
       );

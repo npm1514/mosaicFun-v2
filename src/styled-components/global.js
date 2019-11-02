@@ -27,3 +27,10 @@ import styled from 'styled-components';
     opacity: 0.5;
     margin: 10px auto;
   `;
+  
+  export const MainContent = styled.div`
+    width: 100%;
+    padding: 16px 0;
+    min-height: 300px;
+    text-align: center;
+  `;

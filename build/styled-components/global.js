@@ -3,11 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MainButton = exports.MainInput = exports.MainForm = void 0;
+exports.MainContent = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: 16px 0;\n    min-height: 300px;\n    text-align: center;\n  "]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral(["\n    width: 300px;\n    padding: 16px;\n    font-size: 24px;\n    font-family: 'Oswald';\n    text-align: center;\n    border: 1px solid grey;\n    margin: 24px auto;\n    display: none;\n    opacity: 0.5;\n    margin: 10px auto;\n  "]);
@@ -52,3 +62,7 @@ exports.MainInput = MainInput;
 var MainButton = _styledComponents["default"].button(_templateObject3());
 
 exports.MainButton = MainButton;
+
+var MainContent = _styledComponents["default"].div(_templateObject4());
+
+exports.MainContent = MainContent;

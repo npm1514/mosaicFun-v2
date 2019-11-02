@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Header, Footer, Carousel } from '../components';
-import { HomeWrapper, HomeContent } from '../styled-components/pages/home';
+import { HomeWrapper } from '../styled-components/pages/home';
+import { MainContent } from '../styled-components/global';
 
 class Home extends Component {
     render(){
       return (
           <HomeWrapper>
               <Header/>
-              <HomeContent>
+              <MainContent>
                 <Carousel/>
-              </HomeContent>
+              </MainContent>
               <Footer/>
           </HomeWrapper>
       );

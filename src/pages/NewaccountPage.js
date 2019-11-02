@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { NewaccountWrapper, NewaccountContent } from '../styled-components/pages/newaccount';
+import { Header, Footer } from '../components';
+import { NewaccountWrapper } from '../styled-components/pages/newaccount';
+import { MainContent } from '../styled-components/global';
 
 class Newaccount extends Component {
     render(){
       return (
           <NewaccountWrapper>
               <Header/>
-              <NewaccountContent>
+              <MainContent>
                 newaccount page
-              </NewaccountContent>
+              </MainContent>
               <Footer/>
           </NewaccountWrapper>
       );

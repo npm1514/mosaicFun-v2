@@ -260,7 +260,7 @@ function (_Component) {
         colorText: colorText,
         stateChange: this.stateChange,
         mainTool: true
-      }), _react["default"].createElement(_main.MainContent, null, _react["default"].createElement(_main.MosaicOverlay, {
+      }), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_main.MosaicOverlay, {
         id: "mosaicOverlay"
       }), _react["default"].createElement(_global.MainForm, {
         id: "imgForm"

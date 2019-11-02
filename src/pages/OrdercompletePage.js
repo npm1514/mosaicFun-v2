@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { OrdercompleteWrapper, OrdercompleteContent } from '../styled-components/pages/ordercomplete';
+import { Header, Footer } from '../components';
+import { OrdercompleteWrapper } from '../styled-components/pages/ordercomplete';
+import { MainContent } from '../styled-components/global';
 
 class Ordercomplete extends Component {
     render(){
       return (
           <OrdercompleteWrapper>
               <Header/>
-              <OrdercompleteContent>
+              <MainContent>
                 ordercomplete page
-              </OrdercompleteContent>
+              </MainContent>
               <Footer/>
           </OrdercompleteWrapper>
       );

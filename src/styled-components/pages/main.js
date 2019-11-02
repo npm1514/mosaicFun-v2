@@ -5,12 +5,7 @@ import styled from 'styled-components';
     min-height: 100vh;
   `;
 
-  export const MainContent = styled.div`
-    width: 100%;
-    padding: 16px 0;
-    min-height: 300px;
-    text-align: center;
-  `;
+
 
   export const MainForm = styled.form`
     text-align: center;

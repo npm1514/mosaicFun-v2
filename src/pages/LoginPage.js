@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { LoginWrapper, LoginContent } from '../styled-components/pages/login';
+import { Header, Footer } from '../components';
+import { LoginWrapper } from '../styled-components/pages/login';
+import { MainContent } from '../styled-components/global';
 
 class Login extends Component {
     render(){
       return (
           <LoginWrapper>
               <Header/>
-              <LoginContent>
+              <MainContent>
                 login page
-              </LoginContent>
+              </MainContent>
               <Footer/>
           </LoginWrapper>
       );
