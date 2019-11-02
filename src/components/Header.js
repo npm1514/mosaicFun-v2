@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Header } from '../styled-components/header';
+import { Header, LogoImg } from '../styled-components/header';
 import { MainButton, MainInput } from '../styled-components/global';
-
 
 class HeaderComponent extends Component {
   render(){
     const {gridLines, stateChange, colorText } = this.props;
     return (
       <Header>
-        <img
-          height='50'
-          width='50'
+        <LogoImg
           src='https://png.pngtree.com/template/20190916/ourlarge/pngtree-letter-n-mosaic-logo-icon-design-template-elements-image_307444.jpg'
         />
         <MainButton
@@ -18,20 +15,20 @@ class HeaderComponent extends Component {
           type="button"
           onClick={() => {window.location.reload()}}
         >Restart</MainButton>
-        <input
-          type="radio"
+        <span><input
+          type="checkbox"
           name="gridLines"
           checked={gridLines}
           value={gridLines}
           onClick={() => {stateChange('gridLines', gridLines)}}
-        /> Grid Lines
-        <input
-          type="radio"
+        /> Grid Lines</span>
+        <span><input
+          type="checkbox"
           name="colorText"
           checked={colorText}
           value={colorText}
           onClick={() => {stateChange('colorText', colorText)}}
-        /> Color Numbers
+        /> Color Numbers</span>
         <MainButton
           id="printBtn"
           type="button"

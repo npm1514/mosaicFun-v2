@@ -51,9 +51,7 @@ function (_Component) {
           gridLines = _this$props.gridLines,
           stateChange = _this$props.stateChange,
           colorText = _this$props.colorText;
-      return _react["default"].createElement(_header.Header, null, _react["default"].createElement("img", {
-        height: "50",
-        width: "50",
+      return _react["default"].createElement(_header.Header, null, _react["default"].createElement(_header.LogoImg, {
         src: "https://png.pngtree.com/template/20190916/ourlarge/pngtree-letter-n-mosaic-logo-icon-design-template-elements-image_307444.jpg"
       }), _react["default"].createElement(_global.MainButton, {
         id: "restartBtn",
@@ -61,23 +59,23 @@ function (_Component) {
         onClick: function onClick() {
           window.location.reload();
         }
-      }, "Restart"), _react["default"].createElement("input", {
-        type: "radio",
+      }, "Restart"), _react["default"].createElement("span", null, _react["default"].createElement("input", {
+        type: "checkbox",
         name: "gridLines",
         checked: gridLines,
         value: gridLines,
         onClick: function onClick() {
           stateChange('gridLines', gridLines);
         }
-      }), " Grid Lines", _react["default"].createElement("input", {
-        type: "radio",
+      }), " Grid Lines"), _react["default"].createElement("span", null, _react["default"].createElement("input", {
+        type: "checkbox",
         name: "colorText",
         checked: colorText,
         value: colorText,
         onClick: function onClick() {
           stateChange('colorText', colorText);
         }
-      }), " Color Numbers", _react["default"].createElement(_global.MainButton, {
+      }), " Color Numbers"), _react["default"].createElement(_global.MainButton, {
         id: "printBtn",
         type: "button",
         onClick: this.props.printImage

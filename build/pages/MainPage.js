@@ -121,9 +121,9 @@ function (_Component) {
 
       canvas.width = img.width;
       canvas.height = img.height;
-      canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-      document.getElementById('mosaicOverlay').style.height = img.height + "px";
-      document.getElementById('mosaicOverlay').style.width = img.width + "px";
+      canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height); // document.getElementById('mosaicOverlay').style.height = img.height + "px";
+
+      document.getElementById('mosaicOverlay').style.width = Math.ceil(img.width * 1.01) + "px";
       var newColorList = [];
 
       for (var k = 0; k < divisiblesHeight; k++) {
@@ -192,7 +192,7 @@ function (_Component) {
         mosOL.appendChild(div);
       }
 
-      document.getElementById('imgForm').style.display = "none";
+      document.getElementById('imgFile').style.display = "none";
       document.getElementById('imgVisual').style.display = "none";
       document.getElementById('restartBtn').style.display = "inline-block";
       document.getElementById('printBtn').style.display = "inline-block";
@@ -229,7 +229,6 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "stateChange", function (prop, value) {
-      console.log(prop, value);
       var obj = {};
       obj[prop] = value ? false : true;
 
@@ -243,11 +242,11 @@ function (_Component) {
       divisiblesHeight: 20,
       printWidth: 1063,
       printHeight: 1375,
-      accuracy: 80,
+      accuracy: 85,
       dblclickedId: "",
-      colorText: true,
+      colorText: false,
       gridLines: true,
-      premium: false
+      premium: true
     };
     return _this;
   }

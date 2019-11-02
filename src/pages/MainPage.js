@@ -20,11 +20,11 @@ class Main extends Component {
         divisiblesHeight: 20,
         printWidth: 1063,
         printHeight: 1375,
-        accuracy: 80,
+        accuracy: 85,
         dblclickedId: "",
-        colorText: true,
+        colorText: false,
         gridLines: true,
-        premium: false
+        premium: true
       }
     }
     placeImage = () => {
@@ -93,8 +93,8 @@ class Main extends Component {
       canvas.width = img.width;
       canvas.height = img.height;
       canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-      document.getElementById('mosaicOverlay').style.height = img.height + "px";
-      document.getElementById('mosaicOverlay').style.width = img.width + "px";
+      // document.getElementById('mosaicOverlay').style.height = img.height + "px";
+      document.getElementById('mosaicOverlay').style.width = Math.ceil(img.width * 1.01) + "px";
       let newColorList = [];
       for (var k = 0; k < divisiblesHeight; k++) {
         for (var j = 0; j < divisiblesWidth; j++){
@@ -129,14 +129,10 @@ class Main extends Component {
 
     placeMosaic = () => {
       const {
-        colorList,
-        uniqueColorList,
-        divisiblesWidth,
-        divisiblesHeight,
-        printHeight,
-        printWidth,
-        gridLines,
-        colorText
+        colorList, uniqueColorList,
+        divisiblesWidth, divisiblesHeight,
+        printHeight, printWidth,
+        gridLines, colorText
       } = this.state;
       var img = document.getElementById('imgVisual');
       var sizer = printHeight/img.height <= printWidth/img.width ? printHeight/img.height : printWidth/img.width;
@@ -151,12 +147,12 @@ class Main extends Component {
         div.id = "mosBlock" + i;
         div.style.width = (img.width*sizer/divisiblesWidth) + "px";
         div.style.height = (img.height*sizer/divisiblesHeight) + "px";
-        var colorNum = uniqueColorList.findIndex((color) => color ==  colorList[i]) + 1;
+        var colorNum = uniqueColorList.findIndex(color => color ==  colorList[i]) + 1;
         div.innerText = colorNum;
         div.style.backgroundColor = "rgb("+colorList[i]+")";
         mosOL.appendChild(div);
       }
-      document.getElementById('imgForm').style.display = "none";
+      document.getElementById('imgFile').style.display = "none";
       document.getElementById('imgVisual').style.display = "none";
       document.getElementById('restartBtn').style.display = "inline-block";
       document.getElementById('printBtn').style.display = "inline-block";
@@ -183,48 +179,46 @@ class Main extends Component {
       document.getElementById('mosaicOverlay').removeEventListener('click', this.colorChanger);
     }
     stateChange = (prop, value) => {
-      console.log(prop, value);
       var obj = {};
       obj[prop] = value ? false : true;
       this.setState(obj, this.placeMosaic)
-
     }
     render(){
       const { premium, colorText, gridLines } = this.state;
       return (
-          <MainWrapper>
-              <Header
-                printImage={this.printImage}
-                gridLines={gridLines}
-                colorText={colorText}
-                stateChange={this.stateChange}
+        <MainWrapper>
+          <Header
+            printImage={this.printImage}
+            gridLines={gridLines}
+            colorText={colorText}
+            stateChange={this.stateChange}
+          />
+          <MainContent>
+            <MosaicOverlay id="mosaicOverlay"></MosaicOverlay>
+            <MainForm id="imgForm">
+              {premium && <MainInput
+                id="inputDivision"
+                type="text"
+                placeholder="Number of Divisions [D-20]"
+              />}
+              {premium && <MainInput
+                id="colorAccuracy"
+                type="text"
+                placeholder="Color Quality 1-100 [D-80]"
+              />}
+              <MainInput
+                id="imgFile"
+                type="file"
+                placeholder="Select Image File"
+                onChange={this.placeImage}
               />
-              <MainContent>
-                <MosaicOverlay id="mosaicOverlay"></MosaicOverlay>
-                <MainForm id="imgForm">
-                  {premium && <MainInput
-                    id="inputDivision"
-                    type="text"
-                    placeholder="Number of Divisions [D-20]"
-                  />}
-                  {premium && <MainInput
-                    id="colorAccuracy"
-                    type="text"
-                    placeholder="Color Quality 1-100 [D-80]"
-                  />}
-                  <MainInput
-                    id="imgFile"
-                    type="file"
-                    placeholder="Select Image File"
-                    onChange={this.placeImage}
-                  />
-                </MainForm>
-                <MainImage id="imgVisual"/>
-                <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-                <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
-              </MainContent>
-              <Footer/>
-          </MainWrapper>
+            </MainForm>
+            <MainImage id="imgVisual"/>
+            <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+            <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+          </MainContent>
+          <Footer/>
+        </MainWrapper>
       );
     }
 }
