@@ -50,10 +50,11 @@ function (_Component) {
       var _this$props = this.props,
           gridLines = _this$props.gridLines,
           stateChange = _this$props.stateChange,
-          colorText = _this$props.colorText;
+          colorText = _this$props.colorText,
+          mainTool = _this$props.mainTool;
       return _react["default"].createElement(_header.Header, null, _react["default"].createElement(_header.LogoImg, {
-        src: "https://png.pngtree.com/template/20190916/ourlarge/pngtree-letter-n-mosaic-logo-icon-design-template-elements-image_307444.jpg"
-      }), _react["default"].createElement(_global.MainButton, {
+        src: "/images/logoNoSlogan.png"
+      }), mainTool && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_global.MainButton, {
         id: "restartBtn",
         type: "button",
         onClick: function onClick() {
@@ -79,7 +80,7 @@ function (_Component) {
         id: "printBtn",
         type: "button",
         onClick: this.props.printImage
-      }, "Print"));
+      }, "Print")));
     }
   }]);
 

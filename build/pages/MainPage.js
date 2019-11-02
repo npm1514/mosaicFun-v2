@@ -262,7 +262,8 @@ function (_Component) {
         printImage: this.printImage,
         gridLines: gridLines,
         colorText: colorText,
-        stateChange: this.stateChange
+        stateChange: this.stateChange,
+        mainTool: true
       }), _react["default"].createElement(_main.MainContent, null, _react["default"].createElement(_main.MosaicOverlay, {
         id: "mosaicOverlay"
       }), _react["default"].createElement(_global.MainForm, {

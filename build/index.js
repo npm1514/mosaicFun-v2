@@ -28,6 +28,8 @@ var _fs = _interopRequireDefault(require("fs"));
 
 var _compression = _interopRequireDefault(require("compression"));
 
+var _path = _interopRequireDefault(require("path"));
+
 var _cors = _interopRequireDefault(require("cors"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
@@ -96,7 +98,7 @@ app.get('/home', function (req, res) {
 });
 app.get('/images/:id', function (req, res) {
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.sendFile('./images/' + req.params.id);
+  res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
 });
 app.get('/login', function (req, res) {
   var data = "";

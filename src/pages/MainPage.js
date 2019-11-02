@@ -192,6 +192,7 @@ class Main extends Component {
             gridLines={gridLines}
             colorText={colorText}
             stateChange={this.stateChange}
+            mainTool={true}
           />
           <MainContent>
             <MosaicOverlay id="mosaicOverlay"></MosaicOverlay>

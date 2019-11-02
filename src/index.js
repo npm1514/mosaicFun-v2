@@ -15,6 +15,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 import fs from 'fs';
 import compression from 'compression';
+import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
@@ -76,7 +77,7 @@ app.get('/home', (req, res) => {
 });
 app.get('/images/:id', (req, res) => {
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.sendFile('./images/' + req.params.id);
+  res.sendFile(path.join(__dirname, '../images/' + req.params.id));
 });
 app.get('/login', (req, res) => {
   let data = "";

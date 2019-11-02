@@ -12,8 +12,8 @@ export const Header = styled.header`
   align-items: center;
 `;
 export const LogoImg = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 95px;
+  height: 95px;
   position: absolute;
   top: 0;
   left: 16px;
