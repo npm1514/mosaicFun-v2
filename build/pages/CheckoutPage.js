@@ -49,7 +49,7 @@ function (_Component) {
   _createClass(Checkout, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_checkout.CheckoutWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "checkout page"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_checkout.CheckoutWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "money information log on"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

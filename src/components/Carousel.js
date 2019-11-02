@@ -1,57 +1,39 @@
 import React, { Component } from 'react';
-import { Carousel, CarouselWrap, CarouselSlide } from '../styled-components/components/carousel';
+import { Carousel, CarouselSlide } from '../styled-components/components/carousel';
 import content from './utils';
 
 class CarouselComponent extends Component {
   constructor(props){
     super(props);
     this.state = {
-      slides: [0,3]
+      slideIndex: 0
     }
   }
   componentDidMount(){
+    let carouselSlide = document.getElementById('carouselSlide');
     setInterval(() => {
-      let carouselWrap = document.getElementById('carouselWrap');
-      console.log(carouselWrap.style.left);
-      const { slides } = this.state;
-      let fSlide = slides[0];
-      let lSlide = slides[1];
-      const clength = content.length;
-      if(lSlide + 1 > clength){
-        fSlide = 0;
-        lSlide = 3;
-      } else {
-        fSlide++;
-        lSlide++;
-      }
-      this.setState({
-        slides: [fSlide, lSlide]
-      })
-    }, 5000)
+      carouselSlide.style.opacity = 0;
+      setTimeout(() => {
+        const { slideIndex } = this.state;
+        let newSlideIndex = slideIndex + 2 > content.length ? 0 : slideIndex + 1;
+        this.setState({
+          slideIndex: newSlideIndex
+        })
+        carouselSlide.style.opacity = 1;
+      }, 800)
+    }, 6000);
   }
   render(){
-    const { slides } = this.state;
-    const showingSlides = content.slice(slides[0], slides[1]);
-    console.log(showingSlides);
+    const { slideIndex } = this.state;
+    const slide = content[slideIndex];
     return (
       <Carousel>
-        <CarouselWrap id="carouselWrap">
+        <CarouselSlide id="carouselSlide">
           {
-            showingSlides.map(a => {
-              return (
-                <CarouselSlide>
-                  <h1
-                    style={{
-                      fontSize: a.fontSize,
-                      color: a.color
-                    }}
-                  >{a.text}</h1>
-                  <img src={a.image}/>
-                </CarouselSlide>
-              )
-            })
+            slide.text && <h1>{slide.text}</h1>
           }
-        </CarouselWrap>
+          <img src={slide.image}/>
+        </CarouselSlide>
       </Carousel>
     );
   }

@@ -9,7 +9,8 @@ class Newaccount extends Component {
           <NewaccountWrapper>
               <Header/>
               <MainContent>
-                newaccount page
+                Features
+                Purchase Premium Account
               </MainContent>
               <Footer/>
           </NewaccountWrapper>

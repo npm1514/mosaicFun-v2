@@ -49,7 +49,7 @@ function (_Component) {
   _createClass(Ordercomplete, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_ordercomplete.OrdercompleteWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "ordercomplete page"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_ordercomplete.OrdercompleteWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "order details redirect to logged in main page"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

@@ -47,7 +47,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselComponent).call(this, props));
     _this.state = {
-      slides: [0, 3]
+      slideIndex: 0
     };
     return _this;
   }
@@ -57,46 +57,30 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      var carouselSlide = document.getElementById('carouselSlide');
       setInterval(function () {
-        var carouselWrap = document.getElementById('carouselWrap');
-        console.log(carouselWrap.style.left);
-        var slides = _this2.state.slides;
-        var fSlide = slides[0];
-        var lSlide = slides[1];
-        var clength = _utils["default"].length;
+        carouselSlide.style.opacity = 0;
+        setTimeout(function () {
+          var slideIndex = _this2.state.slideIndex;
+          var newSlideIndex = slideIndex + 2 > _utils["default"].length ? 0 : slideIndex + 1;
 
-        if (lSlide + 1 > clength) {
-          fSlide = 0;
-          lSlide = 3;
-        } else {
-          fSlide++;
-          lSlide++;
-        }
+          _this2.setState({
+            slideIndex: newSlideIndex
+          });
 
-        _this2.setState({
-          slides: [fSlide, lSlide]
-        });
-      }, 5000);
+          carouselSlide.style.opacity = 1;
+        }, 800);
+      }, 6000);
     }
   }, {
     key: "render",
     value: function render() {
-      var slides = this.state.slides;
-
-      var showingSlides = _utils["default"].slice(slides[0], slides[1]);
-
-      console.log(showingSlides);
-      return _react["default"].createElement(_carousel.Carousel, null, _react["default"].createElement(_carousel.CarouselWrap, {
-        id: "carouselWrap"
-      }, showingSlides.map(function (a) {
-        return _react["default"].createElement(_carousel.CarouselSlide, null, _react["default"].createElement("h1", {
-          style: {
-            fontSize: a.fontSize,
-            color: a.color
-          }
-        }, a.text), _react["default"].createElement("img", {
-          src: a.image
-        }));
+      var slideIndex = this.state.slideIndex;
+      var slide = _utils["default"][slideIndex];
+      return _react["default"].createElement(_carousel.Carousel, null, _react["default"].createElement(_carousel.CarouselSlide, {
+        id: "carouselSlide"
+      }, slide.text && _react["default"].createElement("h1", null, slide.text), _react["default"].createElement("img", {
+        src: slide.image
       })));
     }
   }]);

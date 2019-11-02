@@ -56,11 +56,11 @@ function (_Component) {
         href: "/"
       }, _react["default"].createElement(_header.LogoImg, {
         src: "/images/logoNoSlogan.png"
-      })), !mainTool && _react["default"].createElement(_header.HeaderOrg, null, _react["default"].createElement("span", null, _react["default"].createElement(_header.NavLink, {
+      })), _react["default"].createElement(_header.HeaderOrg, null, _react["default"].createElement("span", null, _react["default"].createElement(_header.NavLink, {
         href: "/newaccount"
       }, "Features"), _react["default"].createElement(_header.NavLink, {
         href: "/newaccount"
-      }, "Upgrade")), _react["default"].createElement("span", null, _react["default"].createElement(_header.NavLink, {
+      }, "Get Premium")), _react["default"].createElement("span", null, !mainTool && _react["default"].createElement(_header.NavLink, {
         href: "/main"
       }, "Try It Out"), _react["default"].createElement(_header.NavLink, {
         href: "/login"

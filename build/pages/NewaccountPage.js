@@ -49,7 +49,7 @@ function (_Component) {
   _createClass(Newaccount, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_newaccount.NewaccountWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "newaccount page"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_newaccount.NewaccountWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "Features Purchase Premium Account"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

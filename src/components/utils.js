@@ -1,26 +1,16 @@
 module.exports = [{
-  image: "http://hdwpro.com/wp-content/uploads/2016/02/Nature-Widescreen-Wallpaper.jpeg",
-  text: "Mosaic Fun Presents...\nMosaic Transformation Tool!",
-  fontSize: "48px",
-  color: "#FFF"
+  image: "/images/mountainMoon.png",
+  text: "Mosaic Fun Presents...\nMosaic Transformation Tool!"
 },{
-  image: "http://hdwpro.com/wp-content/uploads/2016/02/Nature-Widescreen-Wallpaper.jpeg",
-  text: "Take your image\nTurn it into art!",
-  fontSize: "48px",
-  color: "#FFF"
+  image: "/images/monumentValley.png",
+  text: "Take your image\nTurn it into art!"
 },{
-  image: "http://hdwpro.com/wp-content/uploads/2016/02/Nature-Widescreen-Wallpaper.jpeg",
-  text: "Or a paint by number...",
-  fontSize: "48px",
-  color: "#FFF"
+  image: "/images/halfDomePBN.png",
+  text: "Or a paint by number..."
 },{
-  image: "http://hdwpro.com/wp-content/uploads/2016/02/Nature-Widescreen-Wallpaper.jpeg",
-  text: "Print to standard sized paper",
-  fontSize: "48px",
-  color: "#FFF"
+  image: "/images/printSize.png",
+  text: "Print to standard sized paper"
 },{
-  image: "http://hdwpro.com/wp-content/uploads/2016/02/Nature-Widescreen-Wallpaper.jpeg",
-  text: "Fun for all!",
-  fontSize: "48px",
-  color: "#FFF"
+  image: "/images/logo2.png",
+  text: ""
 }]

@@ -9,7 +9,8 @@ class Checkout extends Component {
           <CheckoutWrapper>
               <Header/>
               <MainContent>
-                checkout page
+                money information
+                log on 
               </MainContent>
               <Footer/>
           </CheckoutWrapper>

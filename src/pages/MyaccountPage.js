@@ -9,7 +9,9 @@ class Myaccount extends Component {
           <MyaccountWrapper>
               <Header/>
               <MainContent>
-                myaccount page
+                user information
+                subscription details
+                saved images
               </MainContent>
               <Footer/>
           </MyaccountWrapper>

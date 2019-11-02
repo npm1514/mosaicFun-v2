@@ -49,7 +49,7 @@ function (_Component) {
   _createClass(Myaccount, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_myaccount.MyaccountWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "myaccount page"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_myaccount.MyaccountWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "user information subscription details saved images"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

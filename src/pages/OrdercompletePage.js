@@ -9,7 +9,8 @@ class Ordercomplete extends Component {
           <OrdercompleteWrapper>
               <Header/>
               <MainContent>
-                ordercomplete page
+                order details
+                redirect to logged in main page
               </MainContent>
               <Footer/>
           </OrdercompleteWrapper>

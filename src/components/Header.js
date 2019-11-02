@@ -10,20 +10,18 @@ class HeaderComponent extends Component {
         <NavLink href="/"><LogoImg
           src='/images/logoNoSlogan.png'
         /></NavLink>
-        {
-          !mainTool && (
-            <HeaderOrg>
-              <span>
-                <NavLink href="/newaccount">Features</NavLink>
-                <NavLink href="/newaccount">Upgrade</NavLink>
-              </span>
-              <span>
-                <NavLink href="/main">Try It Out</NavLink>
-                <NavLink href="/login">Log In</NavLink>
-              </span>
-            </HeaderOrg>
-          )
-        }
+        <HeaderOrg>
+          <span>
+            <NavLink href="/newaccount">Features</NavLink>
+            <NavLink href="/newaccount">Get Premium</NavLink>
+          </span>
+          <span>
+            {
+              !mainTool &&  <NavLink href="/main">Try It Out</NavLink>
+            }
+            <NavLink href="/login">Log In</NavLink>
+          </span>
+        </HeaderOrg>
         {
           mainTool && (
             <HeaderOrg>
