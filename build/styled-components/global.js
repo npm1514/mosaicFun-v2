@@ -3,11 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MainContent = exports.MainWrapper = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
+exports.SplitContent = exports.MainContent = exports.MainWrapper = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: flex-start;\n    div {\n      width: 50%;\n    }\n  "]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject5() {
   var data = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: 16px 0;\n    min-height: calc(100vh - 93px - 103px - 32px);\n    text-align: center;\n  "]);
@@ -80,3 +90,7 @@ exports.MainWrapper = MainWrapper;
 var MainContent = _styledComponents["default"].div(_templateObject5());
 
 exports.MainContent = MainContent;
+
+var SplitContent = _styledComponents["default"].div(_templateObject6());
+
+exports.SplitContent = SplitContent;

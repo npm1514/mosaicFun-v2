@@ -39,3 +39,13 @@ import styled from 'styled-components';
     min-height: calc(100vh - 93px - 103px - 32px);
     text-align: center;
   `;
+
+  export const SplitContent = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    div {
+      width: 50%;
+    }
+  `;

@@ -47,7 +47,7 @@ function (_Component) {
   _createClass(Newaccount, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "Features Purchase Premium Account"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_global.SplitContent, null, _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Features"), _react["default"].createElement("ul", null, _react["default"].createElement("li", null, "Save and Print"), _react["default"].createElement("li", null, "Add/Remove Grid Lines"), _react["default"].createElement("li", null, "Add/Remove Paint By Number"), _react["default"].createElement("li", null, "Change Block Colors"), _react["default"].createElement("li", null, "Control Color Quality"), _react["default"].createElement("li", null, "Control Division Count"))), _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Subscribe to Premium for $19.99"), _react["default"].createElement("button", null, "Purchase Now"))), "Purchase Premium Account"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 
