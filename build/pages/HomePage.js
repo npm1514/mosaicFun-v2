@@ -9,8 +9,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-var _home = require("../styled-components/pages/home");
-
 var _global = require("../styled-components/global");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -49,7 +47,7 @@ function (_Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_home.HomeWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_components.Carousel, null)), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_components.Carousel, null)), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

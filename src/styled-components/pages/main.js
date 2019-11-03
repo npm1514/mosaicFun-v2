@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-  export const MainWrapper = styled.div`
-    width: 100%;
-    min-height: 100vh;
-  `;
-
-
-
   export const MainForm = styled.form`
     text-align: center;
     margin-bottom: 20px;

@@ -45,7 +45,7 @@ function (_Component) {
   _createClass(FooterComponent, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_footer.Footer, null, _react["default"].createElement("h3", null, "Mosaic Fun Tool"), _react["default"].createElement("h4", null, "Copyright ", new Date().getFullYear()), _react["default"].createElement("h4", null, "Contact - (716)450-2362"), _react["default"].createElement("h4", null, "Salt Lake City, UT"));
+      return _react["default"].createElement(_footer.Footer, null, _react["default"].createElement("h3", null, "Mosaic Transformation Tool - \xA9 ", new Date().getFullYear(), " Mosaic Fun"), _react["default"].createElement("h4", null, "Contact - (716)450-2362 - Salt Lake City, UT"));
     }
   }]);
 

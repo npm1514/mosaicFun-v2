@@ -254,7 +254,7 @@ function (_Component) {
           premium = _this$state4.premium,
           colorText = _this$state4.colorText,
           gridLines = _this$state4.gridLines;
-      return _react["default"].createElement(_main.MainWrapper, null, _react["default"].createElement(_components.Header, {
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, {
         printImage: this.printImage,
         gridLines: gridLines,
         colorText: colorText,

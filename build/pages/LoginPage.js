@@ -65,7 +65,7 @@ function (_Component) {
   _createClass(Login, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_login.LoginWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_login.LoginBlock, null, _react["default"].createElement("a", null, "Create Account"), _react["default"].createElement("form", {
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_login.LoginBlock, null, _react["default"].createElement("form", {
         onSubmit: this.submitSignOn
       }, _react["default"].createElement("input", {
         type: "email",
@@ -75,7 +75,9 @@ function (_Component) {
         placeholder: "password"
       }), _react["default"].createElement("button", {
         type: "submit"
-      }, "Sign In")))), _react["default"].createElement(_components.Footer, null));
+      }, "Sign In")), _react["default"].createElement("a", {
+        href: "/newaccount"
+      }, "No login? Create Account"))), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

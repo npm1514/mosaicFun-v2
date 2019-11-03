@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Header, Footer, Carousel } from '../components';
-import { HomeWrapper } from '../styled-components/pages/home';
-import { MainContent } from '../styled-components/global';
+import { MainWrapper, MainContent } from '../styled-components/global';
 
 class Home extends Component {
     render(){
       return (
-          <HomeWrapper>
+          <MainWrapper>
               <Header/>
               <MainContent>
                 <Carousel/>
               </MainContent>
               <Footer/>
-          </HomeWrapper>
+          </MainWrapper>
       );
     }
 }

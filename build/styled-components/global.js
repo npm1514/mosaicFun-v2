@@ -3,14 +3,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MainContent = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
+exports.MainContent = exports.MainWrapper = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: 16px 0;\n    min-height: calc(100vh - 93px - 103px - 32px);\n    text-align: center;\n  "]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: 16px 0;\n    min-height: 300px;\n    text-align: center;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    min-height: 100vh;\n  "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -63,6 +73,10 @@ var MainButton = _styledComponents["default"].button(_templateObject3());
 
 exports.MainButton = MainButton;
 
-var MainContent = _styledComponents["default"].div(_templateObject4());
+var MainWrapper = _styledComponents["default"].div(_templateObject4());
+
+exports.MainWrapper = MainWrapper;
+
+var MainContent = _styledComponents["default"].div(_templateObject5());
 
 exports.MainContent = MainContent;

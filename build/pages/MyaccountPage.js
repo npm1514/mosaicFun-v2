@@ -9,8 +9,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-var _myaccount = require("../styled-components/pages/myaccount");
-
 var _global = require("../styled-components/global");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -49,7 +47,7 @@ function (_Component) {
   _createClass(Myaccount, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_myaccount.MyaccountWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "user information subscription details saved images"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "user information subscription details saved images"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

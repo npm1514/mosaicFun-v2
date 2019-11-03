@@ -57,6 +57,10 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      for (var i = 0; i < _utils["default"].length; i++) {
+        new Image().src = _utils["default"].image;
+      }
+
       var carouselSlide = document.getElementById('carouselSlide');
       setInterval(function () {
         carouselSlide.style.opacity = 0;

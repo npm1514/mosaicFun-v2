@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Footer } from '../components';
-import { MainWrapper, MainImage, MosaicOverlay, PrintCanvas } from '../styled-components/pages/main';
-import { MainForm, MainInput, MainContent } from '../styled-components/global';
+import { MainImage, MosaicOverlay, PrintCanvas } from '../styled-components/pages/main';
+import { MainForm, MainInput, MainContent, MainWrapper } from '../styled-components/global';
 
 class Main extends Component {
     constructor(props){

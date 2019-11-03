@@ -27,10 +27,15 @@ import styled from 'styled-components';
     opacity: 0.5;
     margin: 10px auto;
   `;
-  
+
+  export const MainWrapper = styled.div`
+    width: 100%;
+    min-height: 100vh;
+  `;
+
   export const MainContent = styled.div`
     width: 100%;
     padding: 16px 0;
-    min-height: 300px;
+    min-height: calc(100vh - 93px - 103px - 32px);
     text-align: center;
   `;

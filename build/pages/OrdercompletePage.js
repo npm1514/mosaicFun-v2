@@ -9,8 +9,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-var _ordercomplete = require("../styled-components/pages/ordercomplete");
-
 var _global = require("../styled-components/global");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -49,7 +47,7 @@ function (_Component) {
   _createClass(Ordercomplete, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_ordercomplete.OrdercompleteWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "order details redirect to logged in main page"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, "order details redirect to logged in main page"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

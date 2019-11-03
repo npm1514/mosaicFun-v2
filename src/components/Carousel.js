@@ -10,6 +10,9 @@ class CarouselComponent extends Component {
     }
   }
   componentDidMount(){
+    for (let i = 0; i < content.length; i++) {
+      new Image().src = content.image;
+    }
     let carouselSlide = document.getElementById('carouselSlide');
     setInterval(() => {
       carouselSlide.style.opacity = 0;

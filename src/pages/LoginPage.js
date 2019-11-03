@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Footer } from '../components';
-import { LoginWrapper, LoginBlock } from '../styled-components/pages/login';
-import { MainContent } from '../styled-components/global';
+import { LoginBlock } from '../styled-components/pages/login';
+import { MainWrapper, MainContent } from '../styled-components/global';
 
 class Login extends Component {
     submitSignOn = () => {
@@ -9,20 +9,20 @@ class Login extends Component {
     }
     render(){
       return (
-          <LoginWrapper>
+          <MainWrapper>
               <Header/>
               <MainContent>
                 <LoginBlock>
-                  <a>Create Account</a>
                   <form onSubmit={this.submitSignOn}>
                     <input type="email" placeholder="email"/>
                     <input type="password" placeholder="password"/>
                     <button type="submit">Sign In</button>
                   </form>
+                  <a href="/newaccount">No login? Create Account</a>
                 </LoginBlock>
               </MainContent>
               <Footer/>
-          </LoginWrapper>
+          </MainWrapper>
       );
     }
 }
