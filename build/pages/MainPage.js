@@ -13,6 +13,16 @@ var _main = require("../styled-components/pages/main");
 
 var _global = require("../styled-components/global");
 
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
+var _FormControlLabel = _interopRequireDefault(require("@material-ui/core/FormControlLabel"));
+
+var _Checkbox = _interopRequireDefault(require("@material-ui/core/Checkbox"));
+
+var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -50,6 +60,10 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this, props));
 
     _defineProperty(_assertThisInitialized(_this), "placeImage", function () {
+      _this.setState({
+        loading: true
+      });
+
       var _this$state = _this.state,
           divisiblesWidth = _this$state.divisiblesWidth,
           divisiblesHeight = _this$state.divisiblesHeight;
@@ -188,10 +202,10 @@ function (_Component) {
         mosOL.appendChild(div);
       }
 
-      document.getElementById('imgFile').style.display = "none";
-      document.getElementById('imgVisual').style.display = "none";
-      document.getElementById('restartBtn').style.display = "inline-block";
-      document.getElementById('printBtn').style.display = "inline-block";
+      _this.setState({
+        printed: true,
+        loading: false
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "doubleClick", function (e) {
@@ -226,12 +240,31 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "stateChange", function (prop, value) {
       var obj = {};
-      obj[prop] = value ? false : true;
 
-      _this.setState(obj, _this.placeMosaic);
+      if (prop == 'divisibles') {
+        obj.divisiblesWidth = parseInt(value);
+        obj.divisiblesHeight = parseInt(value);
+      } else if (prop == 'accuracy') {
+        obj.accuracy = parseInt(value);
+      } else {
+        obj[prop] = value ? false : true;
+      }
+
+      console.log(obj);
+
+      if (_this.state.printed && prop != 'divisibles' && prop != 'accuracy') {
+        obj.loading = true;
+
+        _this.setState(obj, _this.placeMosaic);
+      } else {
+        _this.setState(obj);
+      }
     });
 
     _this.state = {
+      loading: false,
+      printed: false,
+      pageloaded: false,
       colorList: [],
       uniqueColorList: [],
       divisiblesWidth: 20,
@@ -248,41 +281,93 @@ function (_Component) {
   }
 
   _createClass(Main, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        pageloaded: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$state4 = this.state,
           premium = _this$state4.premium,
           colorText = _this$state4.colorText,
-          gridLines = _this$state4.gridLines;
+          gridLines = _this$state4.gridLines,
+          loading = _this$state4.loading,
+          printed = _this$state4.printed,
+          pageloaded = _this$state4.pageloaded,
+          divisiblesWidth = _this$state4.divisiblesWidth,
+          accuracy = _this$state4.accuracy;
+      console.log(this.state.divisiblesWidth);
       return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, {
-        printImage: this.printImage,
-        gridLines: gridLines,
-        colorText: colorText,
-        stateChange: this.stateChange,
         mainTool: true
-      }), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_main.MosaicOverlay, {
+      }), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_global.SubHeader, null, printed && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_Button["default"], {
+        id: "restartBtn",
+        variant: "outlined",
+        color: "primary",
+        onClick: function onClick() {
+          window.location.reload();
+        }
+      }, "Restart"), _react["default"].createElement(_Button["default"], {
+        id: "printBtn",
+        variant: "outlined",
+        color: "primary",
+        onClick: this.printImage
+      }, "Print"), _react["default"].createElement("br", null)), pageloaded && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_FormControlLabel["default"], {
+        control: _react["default"].createElement(_Checkbox["default"], {
+          checked: gridLines,
+          onChange: function onChange() {
+            _this2.stateChange('gridLines', gridLines);
+          },
+          value: gridLines
+        }),
+        label: "Grid Lines"
+      }), _react["default"].createElement(_FormControlLabel["default"], {
+        control: _react["default"].createElement(_Checkbox["default"], {
+          checked: colorText,
+          onClick: function onClick() {
+            _this2.stateChange('colorText', colorText);
+          },
+          value: colorText
+        }),
+        label: "Color Numbers"
+      }))), loading && _react["default"].createElement(_components.LoadingBlock, null), _react["default"].createElement(_main.MosaicOverlay, {
         id: "mosaicOverlay"
       }), _react["default"].createElement(_global.MainForm, {
-        id: "imgForm"
-      }, premium && _react["default"].createElement(_global.MainInput, {
+        id: "imgForm",
+        onSubmit: this.placeImage
+      }, pageloaded && premium && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_TextField["default"], {
         id: "inputDivision",
-        type: "text",
-        placeholder: "Number of Divisions [D-20]"
-      }), premium && _react["default"].createElement(_global.MainInput, {
+        label: "Number of Divisions - Max 50",
+        type: "number",
+        margin: "normal",
+        variant: "outlined",
+        value: divisiblesWidth,
+        onChange: function onChange(e) {
+          _this2.stateChange('divisibles', e.target.value);
+        },
+        onSubmit: this.placeImage
+      }), _react["default"].createElement("br", null), _react["default"].createElement(_TextField["default"], {
         id: "colorAccuracy",
-        type: "text",
-        placeholder: "Color Quality 1-100 [D-80]"
-      }), _react["default"].createElement(_global.MainInput, {
+        label: "Color Quality 1-100",
+        type: "number",
+        margin: "normal",
+        variant: "outlined",
+        value: accuracy,
+        onChange: function onChange(e) {
+          _this2.stateChange('accuracy', e.target.value);
+        },
+        onSubmit: this.placeImage
+      })), !printed && _react["default"].createElement(_global.MainInput, {
         id: "imgFile",
         type: "file",
         placeholder: "Select Image File",
         onChange: this.placeImage
-      })), _react["default"].createElement(_main.MainImage, {
+      })), !printed && _react["default"].createElement(_main.MainImage, {
         id: "imgVisual"
-      }), _react["default"].createElement("script", {
-        src: "https://html2canvas.hertzen.com/dist/html2canvas.min.js"
-      }), _react["default"].createElement("script", {
-        src: "https://unpkg.com/jspdf@latest/dist/jspdf.min.js"
       })), _react["default"].createElement(_components.Footer, null));
     }
   }]);

@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import { Header, Footer } from '../components';
+import React, { Component, Fragment } from 'react';
+import { Header, Footer, LoadingBlock } from '../components';
 import { MainImage, MosaicOverlay, PrintCanvas } from '../styled-components/pages/main';
-import { MainForm, MainInput, MainContent, MainWrapper } from '../styled-components/global';
+import { MainForm, MainInput, MainContent, MainWrapper, SubHeader } from '../styled-components/global';
+
+import Button from '@material-ui/core/Button';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
 
 class Main extends Component {
     constructor(props){
       super(props);
       this.state = {
+        loading: false,
+        printed: false,
+        pageloaded: false,
         colorList: [],
         uniqueColorList: [],
         divisiblesWidth: 20,
@@ -21,6 +29,9 @@ class Main extends Component {
       }
     }
     placeImage = () => {
+      this.setState({
+        loading: true
+      })
       const {
         divisiblesWidth,
         divisiblesHeight
@@ -57,8 +68,7 @@ class Main extends Component {
         var printCanvas = document.getElementById('printCanvas');
         var orientation = mosaic.width > mosaic.height ? "l" : "p"
         var doc = new jsPDF(
-          "",
-          "px",
+          "", "px",
           [(printCanvas.width)*4/3 + 60, (printCanvas.height)*4/3 + 60]
         );
         doc.addImage(printCanvas, 'JPEG', 20, 20, printCanvas.width, printCanvas.height);
@@ -145,10 +155,10 @@ class Main extends Component {
         div.style.backgroundColor = "rgb("+colorList[i]+")";
         mosOL.appendChild(div);
       }
-      document.getElementById('imgFile').style.display = "none";
-      document.getElementById('imgVisual').style.display = "none";
-      document.getElementById('restartBtn').style.display = "inline-block";
-      document.getElementById('printBtn').style.display = "inline-block";
+      this.setState({
+        printed: true,
+        loading: false
+      })
     }
 
     doubleClick = (e) => {
@@ -173,43 +183,122 @@ class Main extends Component {
     }
     stateChange = (prop, value) => {
       var obj = {};
-      obj[prop] = value ? false : true;
-      this.setState(obj, this.placeMosaic)
+
+
+      if(prop == 'divisibles'){
+        obj.divisiblesWidth = parseInt(value);
+        obj.divisiblesHeight = parseInt(value);
+      } else if(prop == 'accuracy'){
+        obj.accuracy = parseInt(value);
+      } else {
+        obj[prop] = value ? false : true;
+      }
+      console.log(obj);
+      if(this.state.printed && prop != 'divisibles' && prop != 'accuracy'){
+        obj.loading = true;
+        this.setState(obj, this.placeMosaic)
+      } else {
+        this.setState(obj)
+      }
+    }
+
+    componentDidMount(){
+      this.setState({
+        pageloaded: true
+      })
     }
     render(){
-      const { premium, colorText, gridLines } = this.state;
+      const {
+        premium, colorText, gridLines, loading, printed, pageloaded, divisiblesWidth, accuracy
+      } = this.state;
+      console.log(this.state.divisiblesWidth);
       return (
         <MainWrapper>
-          <Header
-            printImage={this.printImage}
-            gridLines={gridLines}
-            colorText={colorText}
-            stateChange={this.stateChange}
-            mainTool={true}
-          />
+          <Header mainTool={true} />
           <MainContent>
+            <SubHeader>
+              {
+                printed && <Fragment>
+                  <Button
+                    id="restartBtn"
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => {window.location.reload()}}
+                  >Restart</Button>
+                  <Button
+                    id="printBtn"
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.printImage}
+                  >Print</Button>
+                  <br/>
+                </Fragment>
+              }
+              {
+                pageloaded && <Fragment>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={gridLines}
+                      onChange={() => {this.stateChange('gridLines', gridLines)}}
+                      value={gridLines}
+                    />
+                  }
+                  label="Grid Lines"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={colorText}
+                      onClick={() => {this.stateChange('colorText', colorText)}}
+                      value={colorText}
+                    />
+                  }
+                  label="Color Numbers"
+                />
+                </Fragment>
+              }
+
+            </SubHeader>
+            {loading && <LoadingBlock/>}
             <MosaicOverlay id="mosaicOverlay"></MosaicOverlay>
-            <MainForm id="imgForm">
-              {premium && <MainInput
-                id="inputDivision"
-                type="text"
-                placeholder="Number of Divisions [D-20]"
-              />}
-              {premium && <MainInput
-                id="colorAccuracy"
-                type="text"
-                placeholder="Color Quality 1-100 [D-80]"
-              />}
-              <MainInput
-                id="imgFile"
-                type="file"
-                placeholder="Select Image File"
-                onChange={this.placeImage}
-              />
+            <MainForm id="imgForm" onSubmit={this.placeImage}>
+              {
+                pageloaded && premium && <Fragment>
+                  <TextField
+                    id="inputDivision"
+                    label="Number of Divisions - Max 50"
+                    type="number"
+                    margin="normal"
+                    variant="outlined"
+                    value={divisiblesWidth}
+                    onChange={(e) => {this.stateChange('divisibles', e.target.value)}}
+                     onSubmit={this.placeImage}
+                  />
+                  <br/>
+                  <TextField
+                    id="colorAccuracy"
+                    label="Color Quality 1-100"
+                    type="number"
+                    margin="normal"
+                    variant="outlined"
+                    value={accuracy}
+                    onChange={(e) => {this.stateChange('accuracy', e.target.value)}}
+                     onSubmit={this.placeImage}
+                  />
+                </Fragment>
+              }
+              {
+                !printed && <MainInput
+                  id="imgFile"
+                  type="file"
+                  placeholder="Select Image File"
+                  onChange={this.placeImage}
+                />
+              }
             </MainForm>
-            <MainImage id="imgVisual"/>
-            <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-            <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+            { !printed && <MainImage id="imgVisual"/> }
+
           </MainContent>
           <Footer/>
         </MainWrapper>

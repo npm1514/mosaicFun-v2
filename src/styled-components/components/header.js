@@ -9,6 +9,16 @@ export const Header = styled.header`
   color: ${textColor};
   padding: 16px;
   position: relative;
+  #menuIcon {
+    top: 16px;
+    right: 16px;
+    position: absolute;
+  }
+  @media (min-width: 580px) {
+    #menuIcon {
+      display: none;
+    }
+  }
 `;
 export const LogoImg = styled.img`
   width: ${headerSize};
@@ -24,13 +34,16 @@ export const HeaderOrg = styled.div`
   width: calc(100% - ${headerSize});
   height: ${headerSize};
   margin-left: ${headerSize};
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   span {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  @media (min-width: 580px){
+    display: flex;
   }
 `;
 export const NavLink = styled.a`
@@ -50,5 +63,22 @@ export const NavLink = styled.a`
   }
   &:active {
     color: ${textColor};
+  }
+`;
+export const MobileMenu = styled.div`
+  position: absolute;
+  top: 100px;
+  right: 16px;
+  background-color: #fff;
+  border: 1px solid #8d8d8d;
+  border-radius: 4px;
+  padding: 8px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  a {
+    margin: 8px auto;
   }
 `;

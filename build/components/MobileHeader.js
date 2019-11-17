@@ -11,10 +11,6 @@ var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 
 var _header = require("../styled-components/components/header");
 
-var _Menu = _interopRequireDefault(require("@material-ui/icons/Menu"));
-
-var _MobileHeader = _interopRequireDefault(require("./MobileHeader"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -31,68 +27,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var HeaderComponent =
+var MobileHeader =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(HeaderComponent, _Component);
+  _inherits(MobileHeader, _Component);
 
-  function HeaderComponent(props) {
-    var _this;
+  function MobileHeader() {
+    _classCallCheck(this, MobileHeader);
 
-    _classCallCheck(this, HeaderComponent);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(HeaderComponent).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "openMenu", function () {
-      var val = _this.state.menuOpen ? false : true;
-
-      _this.setState({
-        menuOpen: val
-      });
-
-      if (val) document.body.addEventListener('click', _this.closeMenu);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "closeMenu", function (e) {
-      if (e.target.id != "MenuIcon") {
-        _this.setState({
-          menuOpen: false
-        });
-
-        document.body.removeEventListener('click', _this.closeMenu);
-      }
-    });
-
-    _this.state = {
-      menuOpen: false
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(MobileHeader).apply(this, arguments));
   }
 
-  _createClass(HeaderComponent, [{
+  _createClass(MobileHeader, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          gridLines = _this$props.gridLines,
-          stateChange = _this$props.stateChange,
-          colorText = _this$props.colorText,
-          mainTool = _this$props.mainTool;
-      var menuOpen = this.state.menuOpen;
-      return _react["default"].createElement(_header.Header, null, _react["default"].createElement(_header.NavLink, {
-        href: "/"
-      }, _react["default"].createElement(_header.LogoImg, {
-        src: "/images/logoNoSlogan.png"
-      })), _react["default"].createElement(_header.HeaderOrg, null, _react["default"].createElement("span", null, _react["default"].createElement(_header.NavLink, {
+      var mainTool = this.props.mainTool;
+      return _react["default"].createElement(_header.MobileMenu, null, _react["default"].createElement(_header.NavLink, {
         href: "/newaccount"
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
@@ -102,7 +60,7 @@ function (_Component) {
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
         color: "primary"
-      }, "Get Premium"))), _react["default"].createElement("span", null, !mainTool && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_header.NavLink, {
+      }, "Get Premium")), !mainTool && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_header.NavLink, {
         href: "/main"
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
@@ -112,18 +70,12 @@ function (_Component) {
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
         color: "primary"
-      }, "Log In"))))), _react["default"].createElement(_Menu["default"], {
-        onClick: this.openMenu,
-        id: "MenuIcon",
-        fontSize: "large"
-      }), menuOpen && _react["default"].createElement(_MobileHeader["default"], {
-        mainTool: mainTool
-      }));
+      }, "Log In"))));
     }
   }]);
 
-  return HeaderComponent;
+  return MobileHeader;
 }(_react.Component);
 
-var _default = HeaderComponent;
+var _default = MobileHeader;
 exports["default"] = _default;

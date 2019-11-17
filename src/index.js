@@ -154,15 +154,18 @@ function returnHTML(data, bundle, Page, title){
                 <title>Mosaic Fun - ${title}</title>
                 <meta name="Description" content="Mosaic Fun - ${title}">
                 <style>
-                  body { margin: 0; font-family: Helvetica; }
+                  body { margin: 0; font-family: 'Roboto'; }
                   a { text-decoration: none; color: #000; }
                 </style>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
                 ${styles}
               </head>
               <body>
                 <script>window.os = window.os || {};</script>
                 <script>window.__DATA__=${dataString}</script>
                 <div id="app" role="main">${body}</div>
+                <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+                <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
                 <script>${bundle}</script>
               </body>
             </html>

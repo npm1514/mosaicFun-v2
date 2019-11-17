@@ -1,57 +1,83 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import Button from '@material-ui/core/Button';
 import { Header, LogoImg, NavLink, HeaderOrg } from '../styled-components/components/header';
-import { MainButton, MainInput } from '../styled-components/global';
+import MenuIcon from '@material-ui/icons/Menu';
+
+import MobileHeader from './MobileHeader';
 
 class HeaderComponent extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      menuOpen: false
+    }
+  }
+  openMenu = () => {
+    let val = this.state.menuOpen ? false : true;
+    this.setState({
+      menuOpen: val
+    })
+    if(val) document.body.addEventListener('click', this.closeMenu);
+  }
+  closeMenu = (e) => {
+    if(e.target.id != "MenuIcon"){
+      this.setState({
+        menuOpen: false
+      })
+      document.body.removeEventListener('click', this.closeMenu);
+    }
+  }
   render(){
     const {gridLines, stateChange, colorText, mainTool } = this.props;
+    const { menuOpen } = this.state;
     return (
       <Header>
-        <NavLink href="/"><LogoImg
-          src='/images/logoNoSlogan.png'
-        /></NavLink>
+        <NavLink href="/">
+          <LogoImg src='/images/logoNoSlogan.png'/>
+        </NavLink>
         <HeaderOrg>
           <span>
-            <NavLink href="/newaccount">Features</NavLink>
-            <NavLink href="/newaccount">Get Premium</NavLink>
+            <NavLink href="/newaccount">
+              <Button
+                variant="outlined"
+                color="primary"
+              >Features</Button>
+            </NavLink>
+            <NavLink href="/newaccount">
+              <Button
+                variant="outlined"
+                color="primary"
+              >Get Premium</Button>
+            </NavLink>
           </span>
           <span>
             {
-              !mainTool &&  <NavLink href="/main">Try It Out</NavLink>
+              !mainTool &&  (
+                <Fragment>
+                  <NavLink href="/main">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                    >Try It Out</Button>
+                  </NavLink>
+                  <NavLink href="/login">
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                    >Log In</Button>
+                  </NavLink>
+                </Fragment>
+              )
             }
-            <NavLink href="/login">Log In</NavLink>
           </span>
         </HeaderOrg>
-        {
-          mainTool && (
-            <HeaderOrg>
-              <MainButton
-                id="restartBtn"
-                type="button"
-                onClick={() => {window.location.reload()}}
-              >Restart</MainButton>
-              <span><input
-                type="checkbox"
-                name="gridLines"
-                checked={gridLines}
-                value={gridLines}
-                onClick={() => {stateChange('gridLines', gridLines)}}
-              /> Grid Lines</span>
-              <span><input
-                type="checkbox"
-                name="colorText"
-                checked={colorText}
-                value={colorText}
-                onClick={() => {stateChange('colorText', colorText)}}
-              /> Color Numbers</span>
-              <MainButton
-                id="printBtn"
-                type="button"
-                onClick={this.props.printImage}
-              >Print</MainButton>
-            </HeaderOrg>
-          )
-        }
+        <MenuIcon
+          onClick={this.openMenu}
+          id="MenuIcon"
+          fontSize="large"
+        />
+        { menuOpen && <MobileHeader mainTool={mainTool}/>}
       </Header>
     );
   }
