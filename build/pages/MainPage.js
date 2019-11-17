@@ -66,7 +66,8 @@ function (_Component) {
 
       var _this$state = _this.state,
           divisiblesWidth = _this$state.divisiblesWidth,
-          divisiblesHeight = _this$state.divisiblesHeight;
+          divisiblesHeight = _this$state.divisiblesHeight,
+          file = _this$state.file;
       var inputDivision = document.getElementById('inputDivision');
 
       if (inputDivision && inputDivision.value) {
@@ -85,6 +86,11 @@ function (_Component) {
       }
 
       var fileImg = document.getElementById('imgFile').files[0];
+
+      _this.setState({
+        file: fileImg
+      });
+
       var reader = new FileReader();
 
       var self = _assertThisInitialized(_this);
@@ -301,7 +307,6 @@ function (_Component) {
           pageloaded = _this$state4.pageloaded,
           divisiblesWidth = _this$state4.divisiblesWidth,
           accuracy = _this$state4.accuracy;
-      console.log(this.state.divisiblesWidth);
       return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, {
         mainTool: true
       }), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_global.SubHeader, null, printed && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_Button["default"], {
@@ -349,7 +354,9 @@ function (_Component) {
         onChange: function onChange(e) {
           _this2.stateChange('divisibles', e.target.value);
         },
-        onSubmit: this.placeImage
+        onKeyPress: function onKeyPress(ev) {
+          if (ev.key === 'Enter') _this2.placeImage();
+        }
       }), _react["default"].createElement("br", null), _react["default"].createElement(_TextField["default"], {
         id: "colorAccuracy",
         label: "Color Quality 1-100",
@@ -360,13 +367,15 @@ function (_Component) {
         onChange: function onChange(e) {
           _this2.stateChange('accuracy', e.target.value);
         },
-        onSubmit: this.placeImage
-      })), !printed && _react["default"].createElement(_global.MainInput, {
+        onKeyPress: function onKeyPress(ev) {
+          if (ev.key === 'Enter') _this2.placeImage();
+        }
+      })), _react["default"].createElement(_global.MainInput, {
         id: "imgFile",
         type: "file",
         placeholder: "Select Image File",
         onChange: this.placeImage
-      })), !printed && _react["default"].createElement(_main.MainImage, {
+      })), _react["default"].createElement(_main.MainImage, {
         id: "imgVisual"
       })), _react["default"].createElement(_components.Footer, null));
     }

@@ -34,7 +34,8 @@ class Main extends Component {
       })
       const {
         divisiblesWidth,
-        divisiblesHeight
+        divisiblesHeight,
+        file
       } = this.state;
 
       var inputDivision = document.getElementById('inputDivision');
@@ -49,6 +50,9 @@ class Main extends Component {
         this.setState({accuracy: parseInt(colorAccuracy.value)});
       }
       var fileImg = document.getElementById('imgFile').files[0];
+      this.setState({
+        file: fileImg
+      })
       var reader  = new FileReader();
       var self = this;
       reader.onloadend = () => {
@@ -57,6 +61,7 @@ class Main extends Component {
         img.src = reader.result;
       }
       reader.readAsDataURL(fileImg);
+
     }
     printImage = () => {
       var printCanvas = document.getElementById('printCanvas');
@@ -211,7 +216,6 @@ class Main extends Component {
       const {
         premium, colorText, gridLines, loading, printed, pageloaded, divisiblesWidth, accuracy
       } = this.state;
-      console.log(this.state.divisiblesWidth);
       return (
         <MainWrapper>
           <Header mainTool={true} />
@@ -273,7 +277,7 @@ class Main extends Component {
                     variant="outlined"
                     value={divisiblesWidth}
                     onChange={(e) => {this.stateChange('divisibles', e.target.value)}}
-                     onSubmit={this.placeImage}
+                    onKeyPress={(ev) => { if (ev.key === 'Enter') this.placeImage()}}
                   />
                   <br/>
                   <TextField
@@ -284,20 +288,18 @@ class Main extends Component {
                     variant="outlined"
                     value={accuracy}
                     onChange={(e) => {this.stateChange('accuracy', e.target.value)}}
-                     onSubmit={this.placeImage}
+                    onKeyPress={(ev) => { if (ev.key === 'Enter') this.placeImage()}}
                   />
                 </Fragment>
               }
-              {
-                !printed && <MainInput
+                <MainInput
                   id="imgFile"
                   type="file"
                   placeholder="Select Image File"
                   onChange={this.placeImage}
                 />
-              }
             </MainForm>
-            { !printed && <MainImage id="imgVisual"/> }
+            <MainImage id="imgVisual"/>
 
           </MainContent>
           <Footer/>
