@@ -17,15 +17,15 @@ class Main extends Component {
         pageloaded: false,
         colorList: [],
         uniqueColorList: [],
-        divisiblesWidth: 20,
-        divisiblesHeight: 20,
+        divisiblesWidth: 25,
+        divisiblesHeight: 25,
         printWidth: 1063,
         printHeight: 1375,
-        accuracy: 85,
+        accuracy: 95,
         dblclickedId: "",
         colorText: false,
         gridLines: true,
-        premium: true
+        premium: false
       }
     }
     placeImage = () => {
@@ -72,8 +72,7 @@ class Main extends Component {
         document.body.appendChild(canvas)
         var printCanvas = document.getElementById('printCanvas');
         var orientation = mosaic.width > mosaic.height ? "l" : "p"
-        var doc = new jsPDF(
-          "", "px",
+        var doc = new jsPDF("", "px",
           [(printCanvas.width)*4/3 + 60, (printCanvas.height)*4/3 + 60]
         );
         doc.addImage(printCanvas, 'JPEG', 20, 20, printCanvas.width, printCanvas.height);
@@ -229,17 +228,19 @@ class Main extends Component {
                     color="primary"
                     onClick={() => {window.location.reload()}}
                   >Restart</Button>
-                  <Button
-                    id="printBtn"
-                    variant="outlined"
-                    color="primary"
-                    onClick={this.printImage}
-                  >Print</Button>
+                  {
+                    premium && <Button
+                      id="printBtn"
+                      variant="outlined"
+                      color="primary"
+                      onClick={this.printImage}
+                    >Print</Button>
+                  }
                   <br/>
                 </Fragment>
               }
               {
-                pageloaded && <Fragment>
+                pageloaded && premium && <Fragment>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -300,7 +301,6 @@ class Main extends Component {
                 />
             </MainForm>
             <MainImage id="imgVisual"/>
-
           </MainContent>
           <Footer/>
         </MainWrapper>

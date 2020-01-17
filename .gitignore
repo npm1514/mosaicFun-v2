@@ -6,3 +6,4 @@ yarn.lock
 target/
 /dist
 *~
+config.js

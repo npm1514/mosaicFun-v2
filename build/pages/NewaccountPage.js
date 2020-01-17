@@ -7,9 +7,15 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
 var _components = require("../components");
 
 var _global = require("../styled-components/global");
+
+var _header = require("../styled-components/components/header");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -47,7 +53,12 @@ function (_Component) {
   _createClass(Newaccount, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_global.SplitContent, null, _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Features"), _react["default"].createElement("ul", null, _react["default"].createElement("li", null, "Save and Print"), _react["default"].createElement("li", null, "Add/Remove Grid Lines"), _react["default"].createElement("li", null, "Add/Remove Paint By Number"), _react["default"].createElement("li", null, "Change Block Colors"), _react["default"].createElement("li", null, "Control Color Quality"), _react["default"].createElement("li", null, "Control Division Count"))), _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Subscribe to Premium for $19.99"), _react["default"].createElement("button", null, "Purchase Now"))), "Purchase Premium Account"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_global.MainWrapper, null, _react["default"].createElement(_components.Header, null), _react["default"].createElement(_global.MainContent, null, _react["default"].createElement(_global.SplitContent, null, _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Features"), _react["default"].createElement(_global.Unordered, null, _react["default"].createElement(_global.ListItem, null, "Save and Print"), _react["default"].createElement(_global.ListItem, null, "Add/Remove Grid Lines"), _react["default"].createElement(_global.ListItem, null, "Add/Remove Paint By Number"), _react["default"].createElement(_global.ListItem, null, "Change Block Colors"), _react["default"].createElement(_global.ListItem, null, "Control Color Quality"), _react["default"].createElement(_global.ListItem, null, "Control Division Count"))), _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Subscribe to Premium for $19.99 Anually"), _react["default"].createElement(_header.NavLink, {
+        href: "/checkout"
+      }, _react["default"].createElement(_Button["default"], {
+        variant: "outlined",
+        color: "primary"
+      }, "Purchase Now"))))), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

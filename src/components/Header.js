@@ -10,7 +10,8 @@ class HeaderComponent extends Component {
   constructor(props){
     super(props)
     this.state = {
-      menuOpen: false
+      menuOpen: false,
+      loggedIn: false
     }
   }
   openMenu = () => {
@@ -30,7 +31,7 @@ class HeaderComponent extends Component {
   }
   render(){
     const {gridLines, stateChange, colorText, mainTool } = this.props;
-    const { menuOpen } = this.state;
+    const { menuOpen,loggedIn } = this.state;
     return (
       <Header>
         <NavLink href="/">
@@ -44,7 +45,7 @@ class HeaderComponent extends Component {
                 color="primary"
               >Features</Button>
             </NavLink>
-            <NavLink href="/newaccount">
+            <NavLink href="/checkout">
               <Button
                 variant="outlined"
                 color="primary"
@@ -53,22 +54,27 @@ class HeaderComponent extends Component {
           </span>
           <span>
             {
-              !mainTool &&  (
-                <Fragment>
-                  <NavLink href="/main">
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                    >Try It Out</Button>
-                  </NavLink>
-                  <NavLink href="/login">
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                    >Log In</Button>
-                  </NavLink>
-                </Fragment>
-              )
+              !mainTool &&
+              <NavLink href="/main">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                >Try It Out</Button>
+              </NavLink>
+            }
+            {
+              loggedIn ?
+              <Button
+                variant="outlined"
+                color="primary"
+              >Log Out</Button>
+              :
+              <NavLink href="/login">
+                <Button
+                  variant="outlined"
+                  color="primary"
+                >Log In</Button>
+              </NavLink>
             }
           </span>
         </HeaderOrg>

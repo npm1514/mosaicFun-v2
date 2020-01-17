@@ -74,7 +74,8 @@ function (_Component) {
     });
 
     _this.state = {
-      menuOpen: false
+      menuOpen: false,
+      loggedIn: false
     };
     return _this;
   }
@@ -87,7 +88,9 @@ function (_Component) {
           stateChange = _this$props.stateChange,
           colorText = _this$props.colorText,
           mainTool = _this$props.mainTool;
-      var menuOpen = this.state.menuOpen;
+      var _this$state = this.state,
+          menuOpen = _this$state.menuOpen,
+          loggedIn = _this$state.loggedIn;
       return _react["default"].createElement(_header.Header, null, _react["default"].createElement(_header.NavLink, {
         href: "/"
       }, _react["default"].createElement(_header.LogoImg, {
@@ -98,21 +101,24 @@ function (_Component) {
         variant: "outlined",
         color: "primary"
       }, "Features")), _react["default"].createElement(_header.NavLink, {
-        href: "/newaccount"
+        href: "/checkout"
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
         color: "primary"
-      }, "Get Premium"))), _react["default"].createElement("span", null, !mainTool && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_header.NavLink, {
+      }, "Get Premium"))), _react["default"].createElement("span", null, !mainTool && _react["default"].createElement(_header.NavLink, {
         href: "/main"
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
         color: "secondary"
-      }, "Try It Out")), _react["default"].createElement(_header.NavLink, {
+      }, "Try It Out")), loggedIn ? _react["default"].createElement(_Button["default"], {
+        variant: "outlined",
+        color: "primary"
+      }, "Log Out") : _react["default"].createElement(_header.NavLink, {
         href: "/login"
       }, _react["default"].createElement(_Button["default"], {
         variant: "outlined",
         color: "primary"
-      }, "Log In"))))), _react["default"].createElement(_Menu["default"], {
+      }, "Log In")))), _react["default"].createElement(_Menu["default"], {
         onClick: this.openMenu,
         id: "MenuIcon",
         fontSize: "large"

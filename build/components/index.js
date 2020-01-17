@@ -33,6 +33,18 @@ Object.defineProperty(exports, "LoadingBlock", {
     return _LoadingBlock["default"];
   }
 });
+Object.defineProperty(exports, "CheckoutForm", {
+  enumerable: true,
+  get: function get() {
+    return _CheckoutForm["default"];
+  }
+});
+Object.defineProperty(exports, "VerifyOrder", {
+  enumerable: true,
+  get: function get() {
+    return _VerifyOrder["default"];
+  }
+});
 
 var _Carousel = _interopRequireDefault(require("./Carousel"));
 
@@ -43,5 +55,9 @@ var _Footer = _interopRequireDefault(require("./Footer"));
 var _MobileHeader = _interopRequireDefault(require("./MobileHeader"));
 
 var _LoadingBlock = _interopRequireDefault(require("./LoadingBlock"));
+
+var _CheckoutForm = _interopRequireDefault(require("./CheckoutForm"));
+
+var _VerifyOrder = _interopRequireDefault(require("./VerifyOrder"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

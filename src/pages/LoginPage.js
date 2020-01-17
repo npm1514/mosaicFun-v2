@@ -1,24 +1,44 @@
 import React, { Component } from 'react';
 import { Header, Footer } from '../components';
-import { LoginBlock } from '../styled-components/pages/login';
-import { MainWrapper, MainContent } from '../styled-components/global';
+import { MainWrapper, MainContent, LoginBlock } from '../styled-components/global';
 
 class Login extends Component {
-    submitSignOn = () => {
-      console.log("log on");
+    state = {
+      email: "",
+      password: ""
+    }
+    submitSignOn = (e) => {
+      const { email, password } = this.state;
+      e.preventDefault()
+      console.log("log on", email, password);
+    }
+    stateChange = (prop, val) => {
+      this.setState({[prop]: val})
     }
     render(){
+      console.log(this.state);
+      const { email, password } = this.state;
       return (
           <MainWrapper>
               <Header/>
               <MainContent>
                 <LoginBlock>
                   <form onSubmit={this.submitSignOn}>
-                    <input type="email" placeholder="email"/>
-                    <input type="password" placeholder="password"/>
+                    <input
+                      value={email}
+                      type="email"
+                      placeholder="email"
+                      onChange={(e) => {this.stateChange("email", e.target.value)}}
+                    />
+                    <input
+                      value={password}
+                      type="password"
+                      placeholder="password"
+                      onChange={(e) => {this.stateChange("password", e.target.value)}}
+                    />
                     <button type="submit">Sign In</button>
                   </form>
-                  <a href="/newaccount">No login? Create Account</a>
+                  <a href="/checkout">No login? Create Account</a>
                 </LoginBlock>
               </MainContent>
               <Footer/>

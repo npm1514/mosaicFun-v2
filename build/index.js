@@ -4,9 +4,27 @@ var _express = _interopRequireDefault(require("express"));
 
 var _nodeFetch = _interopRequireDefault(require("node-fetch"));
 
+var _fs = _interopRequireDefault(require("fs"));
+
+var _compression = _interopRequireDefault(require("compression"));
+
+var _path = _interopRequireDefault(require("path"));
+
+var _cors = _interopRequireDefault(require("cors"));
+
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _server = require("react-dom/server");
+
+var _styledComponents = require("styled-components");
+
+var _passport = _interopRequireDefault(require("passport"));
+
+var _expressSession = _interopRequireDefault(require("express-session"));
+
+var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var _HomeRoot = _interopRequireDefault(require("./roots/HomeRoot"));
 
@@ -22,22 +40,26 @@ var _MainRoot = _interopRequireDefault(require("./roots/MainRoot"));
 
 var _MyaccountRoot = _interopRequireDefault(require("./roots/MyaccountRoot"));
 
-var _styledComponents = require("styled-components");
+var _userCtrl = _interopRequireDefault(require("./server/userCtrl"));
 
-var _fs = _interopRequireDefault(require("fs"));
+var _assetCtrl = _interopRequireDefault(require("./server/assetCtrl"));
 
-var _compression = _interopRequireDefault(require("compression"));
+var _config = _interopRequireDefault(require("./config/config"));
 
-var _path = _interopRequireDefault(require("path"));
-
-var _cors = _interopRequireDefault(require("cors"));
-
-var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _passport2 = _interopRequireDefault(require("./config/passport"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 3003;
 var app = (0, _express["default"])();
+(0, _passport2["default"])(_passport["default"]);
+app.use((0, _expressSession["default"])({
+  secret: _config["default"].secret,
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(_passport["default"].initialize());
+app.use(_passport["default"].session());
 app.use((0, _compression["default"])());
 app.use((0, _cors["default"])());
 app.use(_bodyParser["default"].json());
@@ -96,10 +118,6 @@ app.get('/home', function (req, res) {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.send(returnHTML(data, homeBundle, _HomeRoot["default"], "home"));
 });
-app.get('/images/:id', function (req, res) {
-  res.set('Cache-Control', 'public, max-age=31557600');
-  res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
-});
 app.get('/login', function (req, res) {
   var data = "";
   res.set('Cache-Control', 'public, max-age=31557600');
@@ -133,6 +151,33 @@ app.get('/myaccount', function (req, res) {
 app.get('/health', function (req, res) {
   return res.send('OK');
 });
+app.get('/images/:id', function (req, res) {
+  res.set('Cache-Control', 'public, max-age=31557600');
+  res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
+});
+app.get('/userCtrl', _userCtrl["default"].getme);
+app.post('/userCtrl', _passport["default"].authenticate('local-signup'), _userCtrl["default"].login);
+app.put('/userCtrl/:id', _userCtrl["default"].update);
+app["delete"]('/userCtrl/:id', _userCtrl["default"]["delete"]);
+app.get('/userCtrl/logout', _userCtrl["default"].logout);
+app.get('/assetCtrl', _assetCtrl["default"].read);
+app.get('/assetCtrl/:id', _assetCtrl["default"].getOne);
+app.post('/assetCtrl', _assetCtrl["default"].create);
+app.put('/assetCtrl/:id', _assetCtrl["default"].update);
+app["delete"]('/assetCtrl/:id', _assetCtrl["default"]["delete"]);
+app.get('/*', function (req, res) {
+  return res.send('ERROR');
+});
+var mongoUri = 'mongodb://' + _config["default"].userDB + ':' + _config["default"].passDB + '@ds063134.mlab.com:63134/mosaic-fun';
+
+_mongoose["default"].connect(mongoUri);
+
+_mongoose["default"].connection.on('error', console.error.bind(console, 'connection error'));
+
+_mongoose["default"].connection.once('open', function () {
+  console.log("Connected to mongoDB");
+});
+
 app.listen(PORT, function () {
   console.log('Running on http://localhost:' + PORT);
 }); // functions!!!!!!!!!!!!!

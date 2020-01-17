@@ -61,10 +61,10 @@ const shrink = (props) => {
   export const MainContent = styled.div`
     width: 100%;
     padding: 16px 0;
-    min-height: calc(100vh - 93px - 103px - 32px - 100px);
+    min-height: calc(100vh - 93px - 105px - 32px);
     text-align: center;
   `;
-
+//100vh - 93 header - 105 footer - 32 padding
   export const SubHeader = styled.div`
     width: 100%;
     height: auto;
@@ -78,10 +78,21 @@ const shrink = (props) => {
   export const SplitContent = styled.div`
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     div {
-      width: 50%;
+      width: 100%;
+      text-align: center;
+    }
+    a {
+      margin: auto;
+    }
+    @media (min-width: 580px){
+      flex-direction: row;
+      div {
+        width: 50%;
+      }
     }
   `;
 
@@ -100,4 +111,43 @@ const shrink = (props) => {
     border-radius: 4px;
     background-color: ${props => props.color};
     animation: ${props => shrink(props)} 4s linear infinite;
+  `;
+
+  export const ListItem = styled.li`
+    width: max-content;
+    margin: auto;
+  `;
+
+  export const Unordered = styled.ul`
+    width: max-content;
+    margin: auto;
+  `;
+
+  export const LoginBlock = styled.div`
+    width: calc(100% - 32px);
+    padding: 16px;
+    height: max-content;
+    margin: auto;
+    border: 1px solid #303030;
+    border-radius: 4px;
+    text-align: center;
+    input, button {
+      display: block;
+      padding: 12px;
+      font-size: 18px;
+      width: 300px;
+      margin: 12px auto;
+    }
+    select, option {
+      padding: 12px;
+      font-size: 18px;
+      width: 75px;
+      margin: 12px;
+    }
+    a {
+      color: #8a2be2;
+    }
+    @media (min-width: 432px){
+      width: 400px;
+    }
   `;

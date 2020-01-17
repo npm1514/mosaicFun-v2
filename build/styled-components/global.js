@@ -3,13 +3,43 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LoadingSquare = exports.LoadingDiv = exports.SplitContent = exports.SubHeader = exports.MainContent = exports.MainWrapper = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
+exports.LoginBlock = exports.Unordered = exports.ListItem = exports.LoadingSquare = exports.LoadingDiv = exports.SplitContent = exports.SubHeader = exports.MainContent = exports.MainWrapper = exports.MainButton = exports.MainInput = exports.MainForm = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _templateObject13() {
+  var data = _taggedTemplateLiteral(["\n    width: calc(100% - 32px);\n    padding: 16px;\n    height: max-content;\n    margin: auto;\n    border: 1px solid #303030;\n    border-radius: 4px;\n    text-align: center;\n    input, button {\n      display: block;\n      padding: 12px;\n      font-size: 18px;\n      width: 300px;\n      margin: 12px auto;\n    }\n    select, option {\n      padding: 12px;\n      font-size: 18px;\n      width: 75px;\n      margin: 12px;\n    }\n    a {\n      color: #8a2be2;\n    }\n    @media (min-width: 432px){\n      width: 400px;\n    }\n  "]);
+
+  _templateObject13 = function _templateObject13() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject12() {
+  var data = _taggedTemplateLiteral(["\n    width: max-content;\n    margin: auto;\n  "]);
+
+  _templateObject12 = function _templateObject12() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject11() {
+  var data = _taggedTemplateLiteral(["\n    width: max-content;\n    margin: auto;\n  "]);
+
+  _templateObject11 = function _templateObject11() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral(["\n    box-sizing: border-box;\n    border: 1ps solid #8d8d8d;\n    position: absolute;\n    height: 0;\n    width: 0;\n    border-radius: 4px;\n    background-color: ", ";\n    animation: ", " 4s linear infinite;\n  "]);
@@ -32,7 +62,7 @@ function _templateObject9() {
 }
 
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: flex-start;\n    div {\n      width: 50%;\n    }\n  "]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: flex-start;\n    div {\n      width: 100%;\n      text-align: center;\n    }\n    a {\n      margin: auto;\n    }\n    @media (min-width: 580px){\n      flex-direction: row;\n      div {\n        width: 50%;\n      }\n    }\n  "]);
 
   _templateObject8 = function _templateObject8() {
     return data;
@@ -52,7 +82,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: 16px 0;\n    min-height: calc(100vh - 93px - 103px - 32px - 100px);\n    text-align: center;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    padding: 16px 0;\n    min-height: calc(100vh - 93px - 105px - 32px);\n    text-align: center;\n  "]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -134,7 +164,8 @@ var MainWrapper = _styledComponents["default"].div(_templateObject5());
 
 exports.MainWrapper = MainWrapper;
 
-var MainContent = _styledComponents["default"].div(_templateObject6());
+var MainContent = _styledComponents["default"].div(_templateObject6()); //100vh - 93 header - 105 footer - 32 padding
+
 
 exports.MainContent = MainContent;
 
@@ -157,3 +188,15 @@ var LoadingSquare = _styledComponents["default"].div(_templateObject10(), functi
 });
 
 exports.LoadingSquare = LoadingSquare;
+
+var ListItem = _styledComponents["default"].li(_templateObject11());
+
+exports.ListItem = ListItem;
+
+var Unordered = _styledComponents["default"].ul(_templateObject12());
+
+exports.Unordered = Unordered;
+
+var LoginBlock = _styledComponents["default"].div(_templateObject13());
+
+exports.LoginBlock = LoginBlock;

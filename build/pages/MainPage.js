@@ -273,15 +273,15 @@ function (_Component) {
       pageloaded: false,
       colorList: [],
       uniqueColorList: [],
-      divisiblesWidth: 20,
-      divisiblesHeight: 20,
+      divisiblesWidth: 25,
+      divisiblesHeight: 25,
       printWidth: 1063,
       printHeight: 1375,
-      accuracy: 85,
+      accuracy: 95,
       dblclickedId: "",
       colorText: false,
       gridLines: true,
-      premium: true
+      premium: false
     };
     return _this;
   }
@@ -316,12 +316,12 @@ function (_Component) {
         onClick: function onClick() {
           window.location.reload();
         }
-      }, "Restart"), _react["default"].createElement(_Button["default"], {
+      }, "Restart"), premium && _react["default"].createElement(_Button["default"], {
         id: "printBtn",
         variant: "outlined",
         color: "primary",
         onClick: this.printImage
-      }, "Print"), _react["default"].createElement("br", null)), pageloaded && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_FormControlLabel["default"], {
+      }, "Print"), _react["default"].createElement("br", null)), pageloaded && premium && _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_FormControlLabel["default"], {
         control: _react["default"].createElement(_Checkbox["default"], {
           checked: gridLines,
           onChange: function onChange() {
